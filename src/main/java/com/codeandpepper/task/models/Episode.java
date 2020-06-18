@@ -1,9 +1,16 @@
 package com.codeandpepper.task.models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "episode")
 public class Episode {
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
+    @Column(name = "title")
     private String title;
     private List<EpisodeCharacter> episodeCharacters;
 
