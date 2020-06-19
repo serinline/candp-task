@@ -4,12 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "actors")
+//@Entity
+//@Table(name = "actors")
 public class EpisodeCharacter {
-    @Column(name = "episode_id")
+//    @Column(name = "episode_id")
     private int characterId;
-    @Column(name = "character_id")
+//    @Column(name = "character_id")
     private int episodeId;
 
     private Character character;

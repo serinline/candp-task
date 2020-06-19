@@ -12,7 +12,7 @@ public class Episode {
     private int id;
     @Column(name = "title")
     private String title;
-    private List<EpisodeCharacter> episodeCharacters;
+//    private List<EpisodeCharacter> episodeCharacters;
 
     public Episode(){}
 
@@ -37,11 +37,11 @@ public class Episode {
         return title;
     }
 
-    public void setEpisodeCharacters(List<EpisodeCharacter> episodeCharacters) {
-        this.episodeCharacters = episodeCharacters;
-    }
-
-    public List<EpisodeCharacter> getEpisodeCharacters() {
-        return episodeCharacters;
-    }
+//    public void setEpisodeCharacters(List<EpisodeCharacter> episodeCharacters) {
+//        this.episodeCharacters = episodeCharacters;
+//    }
+//
+//    public List<EpisodeCharacter> getEpisodeCharacters() {
+//        return episodeCharacters;
+//    }
 }
