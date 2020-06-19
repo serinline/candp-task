@@ -1,10 +1,12 @@
 package com.codeandpepper.task.models;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.transaction.Transactional;
+import java.util.Set;
 
 @Entity
-@Table(name = "episode")
+@Table(name = "episodes")
+@Transactional
 public class Episode {
     @Id
     @GeneratedValue
@@ -12,13 +14,34 @@ public class Episode {
     private int id;
     @Column(name = "title")
     private String title;
-//    private List<EpisodeCharacter> episodeCharacters;
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(
+            name = "actors",
+            joinColumns = {
+                    @JoinColumn(name = "episode_id", referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "character_id", referencedColumnName = "id")})
+    private Set<Character> episodeCharacters;
 
     public Episode(){}
 
     public Episode(int id, String title){
         this.setId(id);
         this.setTitle(title);
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id;
+        ret += title;
+        ret += " ";
+        return ret;
     }
 
     public void setId(int id) {
@@ -37,11 +60,11 @@ public class Episode {
         return title;
     }
 
-//    public void setEpisodeCharacters(List<EpisodeCharacter> episodeCharacters) {
-//        this.episodeCharacters = episodeCharacters;
-//    }
-//
-//    public List<EpisodeCharacter> getEpisodeCharacters() {
-//        return episodeCharacters;
-//    }
+    public void setEpisodeCharacters(Set<Character> episodeCharacters) {
+        this.episodeCharacters = episodeCharacters;
+    }
+
+    public Set<Character> getEpisodeCharacters() {
+        return episodeCharacters;
+    }
 }
