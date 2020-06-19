@@ -18,13 +18,12 @@ public class Character {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER,
+    @OneToMany(fetch = FetchType.EAGER,
             cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
+                    CascadeType.PERSIST
             },
-            mappedBy = "episodeCharacters")
-    private Set<Episode> characterEpisodes;
+            mappedBy = "characters")
+    private Set<CharacterEpisode> episodes;
 
 
 //    private List<Friends> friends;
@@ -41,7 +40,7 @@ public class Character {
         String ret = "";
         ret += id;
         ret += name;
-        for (Episode e : characterEpisodes){
+        for (CharacterEpisode e : episodes){
             ret += e.toString();
         }
         return ret;
@@ -63,12 +62,12 @@ public class Character {
         return id;
     }
 
-    public void setEpisodeCharacters(Set<Episode> characterEpisodes) {
-        this.characterEpisodes = characterEpisodes;
+    public void setEpisodes(Set<CharacterEpisode> episodes) {
+        this.episodes = episodes;
     }
 
-    public Set<Episode> getEpisodeCharacters() {
-        return characterEpisodes;
+    public Set<CharacterEpisode> getEpisodes() {
+        return episodes;
     }
 
 //    public void setFriends(List<Friends> friends) {

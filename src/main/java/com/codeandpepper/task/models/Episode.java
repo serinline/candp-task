@@ -17,16 +17,14 @@ public class Episode {
 
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+                    CascadeType.PERSIST})
     @JoinTable(
             name = "actors",
             joinColumns = {
                     @JoinColumn(name = "episode_id", referencedColumnName = "id")},
             inverseJoinColumns = {
                     @JoinColumn(name = "character_id", referencedColumnName = "id")})
-    private Set<Character> episodeCharacters;
+    private Set<Character> characters;
 
     public Episode(){}
 
@@ -60,11 +58,11 @@ public class Episode {
         return title;
     }
 
-    public void setEpisodeCharacters(Set<Character> episodeCharacters) {
-        this.episodeCharacters = episodeCharacters;
+    public void setCharacters(Set<Character> characters) {
+        this.characters = characters;
     }
 
-    public Set<Character> getEpisodeCharacters() {
-        return episodeCharacters;
+    public Set<Character> getCharacters() {
+        return characters;
     }
 }
