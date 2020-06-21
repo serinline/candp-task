@@ -1,40 +1,31 @@
 package com.codeandpepper.task.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
-//@Entity
-//@Table(name = "friends")
+@Entity
+@Table(name = "friends")
+@Transactional
 public class Friends {
-//    @Column(name = "character")
-    private int characterId;
-//    @Column(name = "friend")
-    private int friendId;
+
+    @EmbeddedId
+    private FriendsKey id;
+
+    @ManyToOne
+    @MapsId("characterId")
+    @JoinColumn(name="character")
     private Character character;
+
+    @ManyToOne
+    @MapsId("friendId")
+    @JoinColumn(name="friend")
     private Character friend;
 
     public Friends(){}
 
-    public Friends(int characterId, int friendId){
-        this.setCharacterId(characterId);
-        this.setFriendId(friendId);
-    }
-
-    public void setCharacterId(int characterId) {
-        this.characterId = characterId;
-    }
-
-    public int getCharacterId() {
-        return characterId;
-    }
-
-    public void setFriendId(int friendId) {
-        this.friendId = friendId;
-    }
-
-    public int getFriendId() {
-        return friendId;
+    public Friends(Character character, Character friend){
+        this.setCharacter(character);
+        this.setFriend(friend);
     }
 
     public void setCharacter(Character character) {

@@ -26,8 +26,12 @@ public class Character {
             mappedBy = "character")
     private Set<CharacterEpisode> episodes;
 
-
-//    private List<Friends> friends;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            mappedBy = "character")
+    private Set<Friends> friends;
 
     protected Character(){}
 
@@ -46,6 +50,11 @@ public class Character {
         for (CharacterEpisode e : episodes){
             ret += e.toString();
         }
+        ret += " ";
+        for (Friends f : friends)
+            ret += f.getFriend().getName();
+        ret += " ";
+
         return ret;
     }
 
