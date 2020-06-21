@@ -1,8 +1,9 @@
 package com.codeandpepper.task.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 import javax.persistence.Id;
 import javax.transaction.Transactional;
@@ -18,6 +19,7 @@ public class Character {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -38,7 +40,9 @@ public class Character {
     public String toString() {
         String ret = "";
         ret += id;
+        ret += " ";
         ret += name;
+        ret += " ";
         for (CharacterEpisode e : episodes){
             ret += e.toString();
         }

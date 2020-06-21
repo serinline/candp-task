@@ -1,6 +1,7 @@
 package com.codeandpepper.task;
 
 import com.codeandpepper.task.models.Character;
+import com.codeandpepper.task.models.Episode;
 import com.codeandpepper.task.repositories.CharacterRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

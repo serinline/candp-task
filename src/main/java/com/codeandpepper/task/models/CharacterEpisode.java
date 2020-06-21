@@ -54,6 +54,14 @@ public class CharacterEpisode {
     }
 
     @Override
+    public String toString() {
+        String ret = "";
+        ret += episode.getTitle();
+        ret += " ";
+        return ret;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 

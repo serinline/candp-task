@@ -1,5 +1,7 @@
 package com.codeandpepper.task.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.Set;
@@ -15,16 +17,13 @@ public class Episode {
     @Column(name = "title")
     private String title;
 
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST})
-    @JoinTable(
-            name = "actors",
-            joinColumns = {
-                    @JoinColumn(name = "episode_id", referencedColumnName = "id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "character_id", referencedColumnName = "id")})
-    private Set<Character> characters;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            mappedBy = "episode")
+    private Set<CharacterEpisode> characters;
+
 
     public Episode(){}
 
@@ -39,6 +38,11 @@ public class Episode {
         ret += id;
         ret += title;
         ret += " ";
+        for (CharacterEpisode e : characters){
+            ret += e.getCharacter().getName();
+            ret += " ";
+        }
+
         return ret;
     }
 
@@ -58,11 +62,11 @@ public class Episode {
         return title;
     }
 
-    public void setCharacters(Set<Character> characters) {
+    public void setCharacters(Set<CharacterEpisode> characters) {
         this.characters = characters;
     }
 
-    public Set<Character> getCharacters() {
+    public Set<CharacterEpisode> getCharacters() {
         return characters;
     }
 }

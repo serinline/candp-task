@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface CharacterRepository extends CrudRepository<Character, Integer> {
     List<Character> findByName(String name);
-
 }
