@@ -19,10 +19,9 @@ public class Character {
     private String name;
 
     @OneToMany(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST
-            },
-            mappedBy = "characters")
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            mappedBy = "character")
     private Set<CharacterEpisode> episodes;
 
 
