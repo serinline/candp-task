@@ -40,24 +40,6 @@ public class Character {
         this.setName(name);
     }
 
-    @Override
-    public String toString() {
-        String ret = "";
-        ret += id;
-        ret += " ";
-        ret += name;
-        ret += " ";
-        for (CharacterEpisode e : episodes){
-            ret += e.toString();
-        }
-        ret += " ";
-        for (Friends f : friends)
-            ret += f.getFriend().getName();
-        ret += " ";
-
-        return ret;
-    }
-
     public void setName(String name) {
         this.name = name;
     }

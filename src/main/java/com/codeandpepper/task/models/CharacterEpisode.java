@@ -2,7 +2,6 @@ package com.codeandpepper.task.models;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.util.Objects;
 
 @Entity
 @Table(name = "actors")
@@ -53,28 +52,4 @@ public class CharacterEpisode {
         return episode;
     }
 
-    @Override
-    public String toString() {
-        String ret = "";
-        ret += episode.getTitle();
-        ret += " ";
-        return ret;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        CharacterEpisode that = (CharacterEpisode) o;
-        return Objects.equals(character, that.character) &&
-                Objects.equals(episode, that.episode);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(character, episode);
-    }
 }

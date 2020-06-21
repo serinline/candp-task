@@ -32,20 +32,6 @@ public class Episode {
         this.setTitle(title);
     }
 
-    @Override
-    public String toString() {
-        String ret = "";
-        ret += id;
-        ret += title;
-        ret += " ";
-        for (CharacterEpisode e : characters){
-            ret += e.getCharacter().getName();
-            ret += " ";
-        }
-
-        return ret;
-    }
-
     public void setId(int id) {
         this.id = id;
     }

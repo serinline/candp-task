@@ -8,10 +8,10 @@ import java.util.Objects;
 public class CharacterEpisodeKey implements Serializable {
 
     @Column(name="character_id")
-    int characterId;
+    private int characterId;
 
     @Column(name="episode_id")
-    int episodeId;
+    private int episodeId;
 
     private CharacterEpisodeKey(){}
 
@@ -20,7 +20,7 @@ public class CharacterEpisodeKey implements Serializable {
         this.setEpisodeId(episodeId);
     }
 
-    public void setCharacterId(int characterId) {
+    private void setCharacterId(int characterId) {
         this.characterId = characterId;
     }
 
@@ -28,7 +28,7 @@ public class CharacterEpisodeKey implements Serializable {
         return characterId;
     }
 
-    public void setEpisodeId(int episodeId) {
+    private void setEpisodeId(int episodeId) {
         this.episodeId = episodeId;
     }
 

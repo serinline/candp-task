@@ -28,6 +28,14 @@ public class Friends {
         this.setFriend(friend);
     }
 
+    public void setId(FriendsKey id) {
+        this.id = id;
+    }
+
+    public FriendsKey getId() {
+        return id;
+    }
+
     public void setCharacter(Character character) {
         this.character = character;
     }
