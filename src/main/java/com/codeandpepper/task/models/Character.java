@@ -18,6 +18,8 @@ public class Character {
     private int id;
     @Column(name = "name")
     private String name;
+    @Column(name = "planet")
+    private Integer planetId;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,
@@ -54,6 +56,14 @@ public class Character {
 
     public int getId() {
         return id;
+    }
+
+    public void setPlanetId(Integer planetId) {
+        this.planetId = planetId;
+    }
+
+    public Integer getPlanetId() {
+        return planetId;
     }
 
     public void setEpisodes(Set<CharacterEpisode> episodes) {
