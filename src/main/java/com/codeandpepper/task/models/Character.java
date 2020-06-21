@@ -82,11 +82,11 @@ public class Character {
         return episodes;
     }
 
-//    public void setFriends(List<Friends> friends) {
-//        this.friends = friends;
-//    }
-//
-//    public List<Friends> getFriends() {
-//        return friends;
-//    }
+    public void setFriends(Set<Friends> friends) {
+        this.friends = friends;
+    }
+
+    public Set<Friends> getFriends() {
+        return friends;
+    }
 }
