@@ -24,14 +24,12 @@ public class Character {
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
             mappedBy = "character")
     private Set<CharacterEpisode> episodes;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
             mappedBy = "character")
     private Set<Friends> friends;
 
@@ -67,7 +65,8 @@ public class Character {
     }
 
     public void setEpisodes(Set<CharacterEpisode> episodes) {
-        this.episodes = episodes;
+        this.episodes.clear();
+        this.episodes.addAll(episodes);
     }
 
     public Set<CharacterEpisode> getEpisodes() {
@@ -75,7 +74,8 @@ public class Character {
     }
 
     public void setFriends(Set<Friends> friends) {
-        this.friends = friends;
+        this.friends.clear();
+        this.friends.addAll(friends);
     }
 
     public Set<Friends> getFriends() {
