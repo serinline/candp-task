@@ -14,6 +14,13 @@ public class Planet {
     @Column(name = "name")
     private String name;
 
+    private Planet(){}
+
+    public Planet(int id, String name){
+        this.setId(id);
+        this.setName(name);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
