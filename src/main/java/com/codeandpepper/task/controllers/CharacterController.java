@@ -45,7 +45,7 @@ public class CharacterController {
         return characterRepository.findById(id);
     }
 
-    @GetMapping("/characters/episodes/{id}")
+    @GetMapping(path="/characters/episodes/{id}")
     public Set<Episode> getCharacterEpisodes(@PathVariable int id){
         return characterEpisodeRepository.getAllByCharacter_Id(id)
                 .stream()
@@ -53,7 +53,7 @@ public class CharacterController {
                 .collect(Collectors.toSet());
     }
 
-    @GetMapping
+    @GetMapping(path="/characters/friends/{id}")
     public Set<Character> getCharacterFriends(@PathVariable int id){
         return friendsRepository.getAllByCharacter_Id(id)
                 .stream()
@@ -66,22 +66,22 @@ public class CharacterController {
         return planetRepository.findById(id);
     }
 
-    @DeleteMapping("/characters/delete")
+    @DeleteMapping(path="/characters/delete")
     public void deleteAllCharacters(){
         characterRepository.deleteAll();
     }
 
-    @DeleteMapping("characters/delete/{id}")
+    @DeleteMapping(path="characters/delete/{id}")
     public void deleteCharacterById(@PathVariable int id){
         characterRepository.deleteById(id);
     }
 
-    @DeleteMapping("characters/delete/{name}")
+    @DeleteMapping(path="characters/delete/{name}")
     public void deleteCharacterByName(@PathVariable String name){
         characterRepository.deleteCharacterByName(name);
     }
 
-    @PutMapping("/characters/add")
+    @PutMapping(path="/characters/add")
     public Character addCharacter(@PathVariable Character character){
         return characterRepository.save(character);
     }

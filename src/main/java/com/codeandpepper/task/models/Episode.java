@@ -20,7 +20,6 @@ public class Episode {
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
             mappedBy = "episode")
     private Set<CharacterEpisode> characters;
 
@@ -49,7 +48,8 @@ public class Episode {
     }
 
     public void setCharacters(Set<CharacterEpisode> characters) {
-        this.characters = characters;
+        this.characters.clear();
+        this.characters.addAll(characters);
     }
 
     public Set<CharacterEpisode> getCharacters() {
