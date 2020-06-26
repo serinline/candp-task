@@ -33,7 +33,7 @@ public class Character {
             mappedBy = "character")
     private Set<Friends> friends;
 
-    protected Character(){}
+    public Character(){}
 
     public Character(int id, String name){
         this.setId(id);

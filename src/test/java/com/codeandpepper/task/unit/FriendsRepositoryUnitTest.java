@@ -3,6 +3,7 @@ package com.codeandpepper.task.unit;
 import com.codeandpepper.task.models.Character;
 import com.codeandpepper.task.models.Friends;
 import com.codeandpepper.task.repositories.FriendsRepository;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -15,6 +16,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
@@ -23,8 +25,12 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @AutoConfigureTestDatabase(replace = NONE)
 public class FriendsRepositoryUnitTest {
 
-    @MockBean
-    FriendsRepository friendsRepository;
+    private static FriendsRepository friendsRepository;
+
+    @BeforeClass
+    public static void setUp() {
+        friendsRepository = mock(FriendsRepository.class);
+    }
 
     @Test
     public void testGetFriendsList(){
@@ -36,6 +42,7 @@ public class FriendsRepositoryUnitTest {
 
         when(friendsRepository.getAllByCharacter_Id(anyInt())).thenReturn(expected);
         Set<Friends> result = friendsRepository.getAllByCharacter_Id(3);
+
         assertThat(result).isNotNull()
                 .isEqualToComparingOnlyGivenFields(result);
     }
