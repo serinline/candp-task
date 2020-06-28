@@ -1,4 +1,4 @@
-package com.codeandpepper.task.unit;
+package com.codeandpepper.task.unit.repositories;
 
 import com.codeandpepper.task.models.Character;
 import com.codeandpepper.task.models.Friends;

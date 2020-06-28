@@ -1,4 +1,4 @@
-package com.codeandpepper.task.integration;
+package com.codeandpepper.task.integration.repositories;
 
 import com.codeandpepper.task.models.Episode;
 import com.codeandpepper.task.repositories.EpisodeRepository;

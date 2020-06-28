@@ -1,4 +1,4 @@
-package com.codeandpepper.task.unit;
+package com.codeandpepper.task.unit.repositories;
 
 import com.codeandpepper.task.models.Planet;
 import com.codeandpepper.task.repositories.FriendsRepository;
