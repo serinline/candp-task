@@ -1,48 +1,26 @@
 package com.codeandpepper.task.unit.controllers;
 
-import com.codeandpepper.task.StarwarsApplication;
-import com.codeandpepper.task.controllers.CharacterController;
 import com.codeandpepper.task.models.Character;
-import com.codeandpepper.task.models.Friends;
-import com.codeandpepper.task.repositories.CharacterEpisodeRepository;
 import com.codeandpepper.task.repositories.CharacterRepository;
-import com.codeandpepper.task.repositories.FriendsRepository;
-import com.codeandpepper.task.repositories.PlanetRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.MediaType;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.mock;
-import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,9 +29,6 @@ public class CharacterControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-//    @Autowired
-//    private CharacterController characterController;
 
     @MockBean
     private CharacterRepository characterRepository;
